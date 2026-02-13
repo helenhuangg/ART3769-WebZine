@@ -3,29 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <title>Menu – Huang's Cafe</title>
+  <title>Menu - Huang's Cafe</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="assets/hero images/Huangs Cafe 1.png" type="image/png"/>
 </head>
 <body class="menu-page">
   <div class="page menu-page__inner">
+    <!-- back to home -->
     <a href="index.html" class="menu-back" aria-label="Back to home">
       <img src="assets/misc/Back Arrow.png" alt="" class="menu-back-arrow" width="56" height="56" />
     </a>
 
+    <!-- menu title -->
     <header class="menu-header">
-      <span class="menu-title-char">헗</span>
+      <span class="menu-title-char">턳</span>
       <h1 class="menu-title">MENU</h1>
     </header>
 
+    <!-- menu tabs -->
     <div class="menu-panel">
+      <!-- main navigation tabs -->
       <nav class="menu-tabs" role="tablist">
+
         <button type="button" class="menu-tab menu-tab--active" role="tab" aria-selected="true" data-tab="food" id="tab-food"><span class="menu-tab__label">FOOD</span></button>
         <button type="button" class="menu-tab" role="tab" aria-selected="false" data-tab="drinks" id="tab-drinks"><span class="menu-tab__label">DRINKS</span></button>
         <button type="button" class="menu-tab" role="tab" aria-selected="false" data-tab="about" id="tab-about"><span class="menu-tab__label">ABOUT</span></button>
       </nav>
 
-      <main class="menu-frame">
+      <!-- menu content -->
+      <main class="outer-frame">
+        
         <div class="menu-content menu-tab-panel" id="panel-food" role="tabpanel" aria-labelledby="tab-food">
           <div class="menu-grid">
             <a href="ban mian.html" class="menu-item" aria-label="View Fuzhounese Ban Mian recipe">
@@ -74,7 +81,7 @@
 
         <div class="menu-content menu-tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" hidden>
           <div class="menu-about">
-            <p class="menu-about__text">About Huang's Cafe — Hey there! I’m Helen. I made this webzine dedicated to me and also my parents. 
+            <p class="menu-item__name">About Huang's Cafe — Hey there! I’m Helen. I made this webzine dedicated to me and also my parents. 
 
               Since I grew up as a restaurant kid, I was always surrounded by my parents cooking and took it for granted. Now that I am in college, nothing can ever compare to their food. Realizing how important food means to me, I decided to make this webzine to honor the memories and also my parent’s hard work. I hope that I will come back to remember the recipes or just the fond memories related to the meal. I always had a hard time saying I love you to my parents so this is another way I wanted to show how grateful I am towards them.
               
@@ -85,6 +92,7 @@
     </div>
   </div>
 
+  <!-- script to handle menu tabs -->
   <script src="script.js"></script>
   <script>
     document.querySelectorAll('.menu-tab').forEach(function(btn) {
