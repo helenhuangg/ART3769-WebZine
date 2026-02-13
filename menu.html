@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu – Huang's Cafe</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/hero images/Huangs Cafe 1.png" type="image/png"/>
+</head>
+<body class="menu-page">
+  <div class="page menu-page__inner">
+    <a href="index.html" class="menu-back" aria-label="Back to home">
+      <img src="assets/misc/Back Arrow.png" alt="" class="menu-back-arrow" width="56" height="56" />
+    </a>
+
+    <header class="menu-header">
+      <span class="menu-title-char">헗</span>
+      <h1 class="menu-title">MENU</h1>
+    </header>
+
+    <div class="menu-panel">
+      <nav class="menu-tabs" role="tablist">
+        <button type="button" class="menu-tab menu-tab--active" role="tab" aria-selected="true" data-tab="food" id="tab-food"><span class="menu-tab__label">FOOD</span></button>
+        <button type="button" class="menu-tab" role="tab" aria-selected="false" data-tab="drinks" id="tab-drinks"><span class="menu-tab__label">DRINKS</span></button>
+        <button type="button" class="menu-tab" role="tab" aria-selected="false" data-tab="about" id="tab-about"><span class="menu-tab__label">ABOUT</span></button>
+      </nav>
+
+      <main class="menu-frame">
+        <div class="menu-content menu-tab-panel" id="panel-food" role="tabpanel" aria-labelledby="tab-food">
+          <div class="menu-grid">
+            <article class="menu-item">
+              <img src="assets/menu/food/Ban Mian.png" alt="Fuzhounese Ban Mian" class="menu-item__image" />
+              <p class="menu-item__name">Fuzhounese Ban Mian</p>
+            </article>
+            <article class="menu-item">
+              <img src="assets/menu/food/Har Gow.png" alt="Har Gow" class="menu-item__image" />
+              <p class="menu-item__name">Har Gow</p>
+            </article>
+            <article class="menu-item">
+              <img src="assets/menu/food/Shrimp Cheung Fun.png" alt="Shrimp Cheung Fun" class="menu-item__image" />
+              <p class="menu-item__name">Shrimp Cheung Fun</p>
+            </article>
+            <article class="menu-item">
+              <div class="menu-item__image"></div>
+              <p class="menu-item__name">Zong Zi</p>
+            </article>
+            <article class="menu-item">
+              <div class="menu-item__image"></div>
+              <p class="menu-item__name">Food Name</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="menu-content menu-tab-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" hidden>
+          <div class="menu-grid">
+            <article class="menu-item">
+              <div class="menu-item__image"></div>
+              <p class="menu-item__name">Weng's Milk Tea</p>
+            </article>
+            <article class="menu-item">
+              <div class="menu-item__image"></div>
+              <p class="menu-item__name">Coconut Mango Boom</p>
+            </article>
+            <article class="menu-item">
+              <div class="menu-item__image"></div>
+              <p class="menu-item__name">Milk Foam Green Grape Tea</p>
+            </article>
+            <article class="menu-item">
+              <div class="menu-item__image"></div>
+              <p class="menu-item__name">Drink Name</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="menu-content menu-tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" hidden>
+          <div class="menu-about">
+            <p class="menu-about__text">About Huang's Cafe — Hey there! I’m Helen. I made this webzine dedicated to me and also my parents. 
+
+              Since I grew up as a restaurant kid, I was always surrounded by my parents cooking and took it for granted. Now that I am in college, nothing can ever compare to their food. Realizing how important food means to me, I decided to make this webzine to honor the memories and also my parent’s hard work. I hope that I will come back to remember the recipes or just the fond memories related to the meal. I always had a hard time saying I love you to my parents so this is another way I wanted to show how grateful I am towards them.
+              
+              And here are some random pictures!</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.menu-tab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+        document.querySelectorAll('.menu-tab').forEach(function(b) {
+          b.classList.remove('menu-tab--active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('menu-tab--active');
+        this.setAttribute('aria-selected', 'true');
+        document.querySelectorAll('.menu-tab-panel').forEach(function(panel) {
+          panel.hidden = panel.id !== 'panel-' + tab;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

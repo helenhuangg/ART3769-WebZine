@@ -1,0 +1,446 @@
+/* Huang's Cafe – from Figma ART-3769-Webzine */
+
+@font-face {
+  font-family: "YPairingFont";
+  src: url("assets/fonts/YPairingFont_font/TTF/YPairingFont-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YPairingFont";
+  src: url("assets/fonts/YPairingFont_font/TTF/YPairingFont-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelloPerfect";
+  src: url("assets/fonts/HelloImperfectRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hello-Imperfect";
+  src: url("assets/fonts/HelloImperfectRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YPairingFont OTF";
+  src: url("assets/fonts/YPairingFont_font/OTF/YPairingFont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ownglyph EuiyeonChae";
+  src: url("assets/fonts/온글립 의연체.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* pseudo-class that matches the root element of the document*/
+:root {
+  --cream: #FFEEC3;
+  --cream-dark: #FFF3D4;
+  --white: #fff;
+  --yellow-burst: #FFD900;
+  --font-hand: "YPairingFont", sans-serif;
+  --tab-outer: #BD8C51;
+  --tab-pill: #763F21;
+  --tab-text: #FAD1B5;
+  --tab-inactive-bg: #763F21;
+  --tab-inactive-text: #F9DBC4;
+  --tab-bottom-line: #804529;
+  --frame-border: #B8962E;
+  --frame-bg: #F5F0E1;
+  --placeholder: #E0DDD5;
+  --card-text-bg: #F5F0E1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-hand);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  /* Striped background – full viewport, fills left/right and runs full height */
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cream) 0,
+    var(--cream) 28px,
+    var(--cream-dark) 28px,
+    var(--cream-dark) 56px
+  );
+  background-attachment: scroll;
+}
+
+/* Page content container */
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  min-height: 1024px;
+  padding: clamp(24px, 8vw, 100px) clamp(16px, 12vw, 200px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero: hero images from assets */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+/* Hero frame – Figma 85-197 (964×707 at 1440px wireframe), responsive */
+.hero-images {
+  position: relative;
+  width: 100%;
+  max-width: 964px;
+  height: auto;
+  aspect-ratio: 964 / 707;
+  flex-shrink: 0;
+}
+
+.hero-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Scales with hero frame (same proportion as at 964px reference) */
+.hero-open-sign {
+  position: absolute;
+  bottom: 15%;
+  left: 20%;
+  transform: translateX(calc(-50% - 8%)) scale(1);
+  width: 20%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  animation: open-sign-pulse 2s ease-in-out infinite;
+}
+
+@keyframes open-sign-pulse {
+  0%, 100% {
+    transform: translateX(calc(-50% - 8%)) scale(1);
+  }
+  50% {
+    transform: translateX(calc(-50% - 8%)) scale(1.06);
+  }
+}
+
+/* CTA – Figma node 85-195: character 흲 with yellow fill + white stroke */
+.cta-order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  z-index: 1;
+}
+
+.cta-order-char {
+  color: #FECF05;
+  -webkit-text-stroke-width: clamp(3px, 1.5vw, 7px);
+  -webkit-text-stroke-color: #F5F5F5;
+  paint-order: stroke fill;
+  font-family: "YPairingFont OTF", "YPairingFont", sans-serif;
+  font-size: clamp(28px, 5vw, 50px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.cta-order-text {
+  color: #FECF05;
+  -webkit-text-stroke-width: clamp(3px, 1.5vw, 7px);
+  -webkit-text-stroke-color: #F5F5F5;
+  paint-order: stroke fill;
+  font-family: "Hello-Imperfect", sans-serif;
+  font-size: clamp(28px, 5vw, 50px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.cta-order:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+.cta-order:active {
+  transform: scale(0.98);
+}
+
+/* Responsive: tablet and below */
+@media (max-width: 1024px) {
+  .page {
+    padding: 48px 40px;
+  }
+}
+
+/* Responsive: mobile */
+@media (max-width: 640px) {
+  .page {
+    padding: 24px 16px;
+    gap: 8px;
+  }
+}
+
+/* ========== Menu page  ========== */
+.menu-page .page {
+  justify-content: flex-start;
+  padding-top: clamp(16px, 4vw, 40px);
+  padding-bottom: clamp(24px, 6vw, 60px);
+  min-height: 100vh;
+  gap: 24px;
+}
+
+.menu-back {
+  position: absolute;
+  top: clamp(16px, 4vw, 40px);
+  left: clamp(16px, 12vw, 200px);
+  z-index: 2;
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-back:hover {
+  transform: scale(1.08);
+  opacity: 0.95;
+}
+
+.menu-back-arrow {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  margin-top: 0.5rem;
+}
+
+.menu-title-char {
+  color: #FECF05;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #F5F5F5;
+  paint-order: stroke fill;
+  font-family: "YPairingFont OTF", "YPairingFont", sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.menu-title {
+  margin: 0;
+  color: #FECF05;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #F5F5F5;
+  paint-order: stroke fill;
+  font-family: "Hello-Imperfect", sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+/* Navigation + menu in same frame – Figma 85-328 */
+.menu-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 1 auto;
+  width: 100%;
+  max-width: 964px;
+}
+
+/* Tabs – Figma 85-316 (nav) & 85-318 (selected tab shape) */
+.menu-tabs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 0;
+  margin-left: 24px;
+}
+
+/* Unselected tab – Figma 85-321: rounded top, flat bottom, subtle bottom line */
+.menu-tab {
+  position: relative;
+  padding: 10px 24px 12px;
+  border: none;
+  border-radius: 18px 18px 0 0;
+  background: var(--tab-inactive-bg);
+  color: var(--tab-inactive-text);
+  font-family: "Hello-Imperfect", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu-tab:hover:not(.menu-tab--active) {
+  background: #8a4a28;
+}
+
+/* Selected tab – Figma 85-317: outer #BD8C51, inner pill #763F21, text #FAD1B5 */
+.menu-tab--active {
+  padding: 20px 28px 14px 28px;
+  background: var(--tab-outer);
+  border-radius: 18px 18px 0 0;
+  color: var(--tab-text);
+  box-shadow: none;
+}
+
+.menu-tab--active::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 10px;
+  bottom: 8px;
+  background: var(--tab-pill);
+  border-radius: 999px;
+  z-index: 0;
+}
+
+.menu-tab__label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Menu frame – Figma 85-286, responsive */
+.menu-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2px, 0.5vw, 4.633px);
+  flex: 0 1 auto;
+  width: 100%;
+  padding: clamp(12px, 4vw, 46.325px);
+  border-radius: clamp(12px, 3vw, 27.795px);
+  border: clamp(2px, 0.5vw, 4.633px) solid #BE8D53;
+  background: #E8CD8A;
+  overflow: hidden;
+}
+
+/* Food cards frame – Figma 85-287, responsive */
+.menu-tab-panel[hidden] {
+  display: none;
+}
+
+.menu-content {
+  padding: clamp(8px, 2.5vw, 23.163px);
+  width: 100%;
+  border-radius: clamp(12px, 3vw, 27.795px);
+  background: #F5EDDB;
+}
+
+.menu-about {
+  padding: 1rem 0;
+}
+
+.menu-about__text {
+  margin: 0;
+  color: #763F21;
+  font-family: "Ownglyph EuiyeonChae", sans-serif;
+  font-size: clamp(16px, 2.5vw, 24px);
+  line-height: 1.5;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(160px, 100%), 1fr));
+  gap: clamp(12px, 4vw, 36px);
+  width: 100%;
+}
+
+/* Food card – Figma 85-289, responsive; grid cell sizes the card */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.menu-item__image {
+  width: 100%;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  display: block;
+  object-fit: cover;
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.menu-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-item__name {
+  margin: 0;
+  padding: clamp(0.35rem, 1vw, 0.5rem) 0.25rem clamp(0.5rem, 1.5vw, 0.75rem);
+  color: #763F21;
+  text-align: center;
+  font-family: "Ownglyph EuiyeonChae", sans-serif;
+  font-size: clamp(16px, 2.5vw, 24px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
