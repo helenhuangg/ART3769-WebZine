@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Huang's Cafe</title>
+  <script>
+    (function() {
+      if (location.hostname.indexOf('github.io') !== -1) {
+        var base = location.origin + location.pathname.replace(/\/[^/]*$/, '/');
+        document.write('<base href="' + base + '">');
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="assets/hero images/Huangs Cafe 1.png" type="image/png"/>
 </head>
