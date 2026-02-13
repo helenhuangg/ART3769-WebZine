@@ -2,24 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>Huang's Cafe</title>
   <script>
     (function() {
-      if (location.hostname.indexOf('github.io') !== -1) {
-        var base = location.origin + location.pathname.replace(/\/[^/]*$/, '/');
-        document.write('<base href="' + base + '">');
-      }
-    })();
-  </script>
-  <link rel="stylesheet" href="styles.css" id="main-css" />
-  <script>
-    (function() {
-      if (location.hostname.indexOf('github.io') !== -1) {
-        var base = location.origin + location.pathname.replace(/\/[^/]*$/, '/');
-        var link = document.getElementById('main-css');
-        if (link) link.href = base + 'styles.css';
-      }
+      var isGitHub = location.hostname.indexOf('github.io') !== -1;
+      var base = isGitHub ? location.origin + location.pathname.replace(/\/[^/]*$/, '/') : '';
+      if (isGitHub) document.write('<base href="' + base + '">');
+      document.write('<link rel="stylesheet" href="' + (isGitHub ? base + 'styles.css?v=3' : 'styles.css') + '" id="main-css" />');
     })();
   </script>
   <link rel="icon" href="assets/hero images/Huangs Cafe 1.png" type="image/png"/>
