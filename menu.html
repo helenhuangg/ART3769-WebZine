@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>Menu – Huang's Cafe</title>
   <style>
-    html, body { width: 100%; margin: 0; box-sizing: border-box; }
+    html { width: 100vw; margin: 0; box-sizing: border-box; }
+    body { width: 100%; margin: 0; box-sizing: border-box; }
     .page { width: 100%; max-width: 1440px; margin: 0 auto; box-sizing: border-box; }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono&family=Lora:wght@400;600&family=Nunito&family=Public+Sans:wght@300&family=Source+Sans+Pro:wght@400;600;700&display=swap" />
   <link rel="stylesheet" href="styles.css" id="main-css" />
   <script>
     (function() {
@@ -15,9 +19,8 @@
         var base = location.origin + location.pathname;
         if (base.endsWith('.html')) base = base.replace(/\/[^/]+$/, '/');
         if (!base.endsWith('/')) base += '/';
-        document.write('<base href="' + base + '">');
         var link = document.getElementById('main-css');
-        if (link) link.href = base + 'styles.css?v=5';
+        if (link) link.href = base + 'styles.css?v=6';
       }
     })();
   </script>
