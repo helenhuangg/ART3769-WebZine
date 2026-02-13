@@ -65,6 +65,10 @@
   --frame-bg: #F5F0E1;
   --placeholder: #E0DDD5;
   --card-text-bg: #F5F0E1;
+  --recipe-card-bg: #FAF6F0;
+  --recipe-card-border: #E0D7C5;
+  --recipe-text: #763F21;
+  --recipe-note-text: #8B6914;
 }
 
 *,
@@ -79,20 +83,20 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 body {
   margin: 0;
   width: 100%;
-  min-width: 100%;
+  min-width: 375px;
   min-height: 100vh;
   min-height: 100dvh;
   font-family: var(--font-hand);
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: auto;
   /* Striped background – full viewport, fills left/right and runs full height */
   background: repeating-linear-gradient(
     90deg,
@@ -115,7 +119,9 @@ body {
   max-width: 1440px;
   min-width: 0;
   min-height: 100vh;
-  min-height: 1024px;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   padding: clamp(32px, 8vw, 100px) clamp(20px, 12vw, 200px);
   margin: 0 auto;
   box-sizing: border-box;
@@ -131,6 +137,8 @@ body {
   align-items: center;
   margin-bottom: 2rem;
   z-index: 1;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Hero frame – Figma 85-197 (964×707 at 1440px wireframe), responsive */
@@ -141,6 +149,8 @@ body {
   height: auto;
   aspect-ratio: 964 / 707;
   flex-shrink: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-logo {
@@ -232,6 +242,14 @@ body {
   .page {
     padding: 24px 16px;
     gap: 8px;
+  }
+}
+
+/* Very narrow (e.g. 369px): keep hero centered, minimal side padding */
+@media (max-width: 375px) {
+  .page {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
@@ -423,6 +441,9 @@ body {
   min-width: 0;
   background: transparent;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .menu-item__image {
@@ -446,6 +467,270 @@ body {
 .menu-item__name {
   margin: 0;
   padding: clamp(0.35rem, 1vw, 0.5rem) 0.25rem clamp(0.5rem, 1.5vw, 0.75rem);
+  color: #763F21;
+  text-align: center;
+  font-family: "Ownglyph EuiyeonChae", sans-serif;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* ========== Recipe / Food detail page (Figma 86-549) ========== */
+.recipe-page .page {
+  justify-content: flex-start;
+  padding-top: clamp(16px, 4vw, 40px);
+  padding-bottom: clamp(24px, 6vw, 60px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto;
+  gap: 20px;
+}
+
+.recipe-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  margin-top: 0.5rem;
+}
+
+.recipe-title {
+  margin: 0;
+  min-width: 0;
+  color: #FECF05;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #F5F5F5;
+  paint-order: stroke fill;
+  font-family: "Hello-Imperfect", sans-serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* "Ban Mian" wraps below "Fuzhounese" when viewport is narrow */
+.recipe-title__line2 {
+  display: inline;
+}
+
+@media (max-width: 560px) {
+  .recipe-title__line2 {
+    display: block;
+  }
+}
+
+/* Recipe outer frame – same as menu frame (Figma 85-286 / 86-587) */
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 964px;
+  padding: clamp(12px, 4vw, 46.325px);
+  gap: clamp(2px, 0.5vw, 4.633px);
+  border-radius: clamp(12px, 3vw, 27.795px);
+  border: clamp(2px, 0.5vw, 4.633px) solid #BE8D53;
+  background: #E8CD8A;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Recipe inner content – same as menu content (Figma 85-287) */
+.recipe-card__inner {
+  width: 100%;
+  padding: clamp(8px, 2.5vw, 23.163px);
+  border-radius: clamp(12px, 3vw, 27.795px);
+  background: #F5EDDB;
+  box-sizing: border-box;
+}
+
+.recipe-top {
+  display: flex;
+  gap: clamp(16px, 4vw, 24px);
+  align-items: flex-start;
+  margin-bottom: clamp(16px, 4vw, 24px);
+}
+
+/* Figma 86-636: outer container + image (300×306) + quote wrap */
+.recipe-top--figma-86-636 {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 8vw, 100px);
+  align-self: stretch;
+  margin-bottom: clamp(16px, 4vw, 24px);
+}
+
+.recipe-top--figma-86-636 .recipe-image-wrap {
+  width: clamp(180px, 22vw, 300px);
+  height: clamp(184px, 22.5vw, 306px);
+  flex-shrink: 0;
+  border-radius: 23px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.recipe-top--figma-86-636 .recipe-quote-wrap {
+  display: flex;
+  padding: 0 clamp(20px, 4vw, 50px);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.recipe-top--figma-86-636 .recipe-quote {
+  flex: 1 0 0;
+  margin: 0;
+  min-width: 0;
+  color: #BE8D53;
+  font-family: "Hello-Imperfect", sans-serif;
+  font-size: clamp(16px, 3vw, 28px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.recipe-top--figma-86-636 .recipe-quote-mark {
+  color: #BE8D53;
+}
+
+.recipe-image-wrap {
+  flex-shrink: 0;
+  width: clamp(100px, 28vw, 160px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--placeholder);
+}
+
+.recipe-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-quote {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  color: var(--recipe-text);
+  font-family: "Hello-Imperfect", "Ownglyph EuiyeonChae", sans-serif;
+  font-size: clamp(14px, 2.5vw, 18px);
+  line-height: 1.5;
+}
+
+.recipe-quote-mark {
+  color: var(--tab-pill);
+  font-size: 1.4em;
+  font-family: "Hello-Imperfect", serif;
+}
+
+/* Recipe divider – Figma 87-637 SVG */
+.recipe-divider {
+  margin: clamp(5px, 4vw, 24px) 0;
+  text-align: center;
+}
+
+.recipe-divider__img {
+  display: block;
+  width: 100%;
+  max-width: clamp(120px, 70vw, 280px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.recipe-ingredients {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 2vw, 15px);
+  align-self: stretch;
+}
+
+.recipe-ingredients .recipe-heading {
+  margin: 0;
+  color: #763F21;
+  font-family: "Hello-Imperfect", sans-serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.recipe-heading {
+  margin: 0 0 clamp(8px, 2vw, 12px);
+  color: var(--recipe-text);
+  font-family: "Hello-Imperfect", "Ownglyph EuiyeonChae", sans-serif;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.recipe-ingredient-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 3vw, 25px);
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.recipe-ingredient {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.recipe-ingredient-icon {
+  width: clamp(48px, 12vw, 72px);
+  height: clamp(48px, 12vw, 72px);
+  border-radius: 10px;
+  background: var(--placeholder);
+  flex-shrink: 0;
+}
+
+.recipe-ingredient-name {
+  color: #763F21;
+  text-align: center;
+  font-family: "Ownglyph EuiyeonChae", sans-serif;
+  font-size: clamp(16px, 2.5vw, 24px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.recipe-step-list {
+  margin: 0;
+  padding-left: clamp(20px, 5vw, 28px);
+  color: #763F21;
+  text-align: left;
+  font-family: "Ownglyph EuiyeonChae", sans-serif;
+  font-size: clamp(16px, 2.5vw, 24px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.recipe-step-list li {
+  margin-bottom: 6px;
+}
+
+.recipe-note {
+  margin: clamp(16px, 4vw, 24px) 0 0;
+  padding: 0;
   color: #763F21;
   text-align: center;
   font-family: "Ownglyph EuiyeonChae", sans-serif;
