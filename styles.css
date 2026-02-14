@@ -116,21 +116,23 @@ h2 {
   margin: 0;
   color: #763F21;
   font-family: "Hello-Imperfect", sans-serif;
-  font-size: clamp(18px, 2.5vw, 24px);
+  font-size: clamp(16px, 2.5vw, 20px);
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-p {
+p,
+.recipe-ingredient-name,
+.recipe-step-list li {
   margin: 0;
+  padding: clamp(0.35rem, 1vw, 0.5rem) 0.25rem clamp(0.5rem, 1.5vw, 0.75rem);
   color: #763F21;
-  text-align: center;
   font-family: "Ownglyph EuiyeonChae", sans-serif;
-  font-size: clamp(16px, 2.5vw, 24px);
+  font-size: clamp(24px, 2.5vw, 36px);
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.35;
 }
 
 body {
@@ -710,6 +712,7 @@ body {
   font-family: "Hello-Imperfect", "Ownglyph EuiyeonChae", sans-serif;
   font-size: clamp(16px, 2.5vw, 20px);
   font-weight: 700;
+  text-align: left;
 }
 
 .recipe-ingredient {
@@ -730,16 +733,6 @@ body {
   display: block;
 }
 
-.recipe-ingredient-name {
-  color: #763F21;
-  text-align: center;
-  font-family: "Ownglyph EuiyeonChae", sans-serif;
-  font-size: clamp(16px, 2.5vw, 24px);
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 .recipe-steps {
   display: flex;
   flex-direction: column;
@@ -750,13 +743,7 @@ body {
 .recipe-step-list {
   margin: 0;
   padding-left: clamp(20px, 5vw, 28px);
-  color: #763F21;
-  text-align: left;
-  font-family: "Ownglyph EuiyeonChae", sans-serif;
-  font-size: clamp(16px, 2.5vw, 24px);
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  list-style: decimal;
 }
 
 .recipe-step-list li {
